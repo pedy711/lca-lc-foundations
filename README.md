@@ -290,3 +290,15 @@ If you see a warning about Python version not satisfying requirements, you need 
 ### Development Environment
 
 The course uses [Jupyter](https://jupyter.org/) notebooks. The Jupyter package is installed in the virtual environment and can be run as described above. Jupyter notebooks can also be edited and run in VSCode or other VSCode variants such as Windsurf or Cursor.
+
+### Notebook Output Stripping
+
+This repository uses [nbstripout](https://github.com/kynan/nbstripout) to automatically strip cell outputs and execution counts from Jupyter notebooks when committing. This keeps diffs clean and avoids committing large, frequently changing outputs.
+
+The git filter is set up per-repository. After cloning and installing dependencies, run:
+
+```bash
+uv run nbstripout --install
+```
+
+This only needs to be done once per clone. After that, notebook outputs are stripped automatically on `git add`.
